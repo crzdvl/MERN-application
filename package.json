@@ -5,7 +5,8 @@
   "main": "index.js",
   "dependencies": {},
   "devDependencies": {
-    "commitizen": "^4.1.2"
+    "commitizen": "^4.1.2",
+    "cz-conventional-changelog": "^3.2.0"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
