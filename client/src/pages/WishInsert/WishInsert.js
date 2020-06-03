@@ -9,70 +9,68 @@ class WishInsert extends Component {
         description: '',
     }
 
-handleChangeTitle = async event => {
-    this.setState({ title : event.target.value });
-}
+    handleChangeTitle = async event => {
+        this.setState({ title : event.target.value });
+    }
 
-handleChangeDescription = async event => {
-    this.setState({ description : event.target.value });
-}
+    handleChangeDescription = async event => {
+        this.setState({ description : event.target.value });
+    }
 
-handleIncludeWish = async () => {
-    const { title, description } = this.state;
-    const payload = { title, description };
-    console.log(payload, 'payload');
+    handleIncludeWish = async () => {
+        const { title, description } = this.state;
+        const payload = { title, description };
+        console.log(payload, 'payload');
 
-    await api.insertWish(payload).then(res => {
-        console.log(res);
-        this.setState({
-            title: '',
-            description: ''
+        await api.insertWish(payload).then(res => {
+            console.log(res);
+            this.setState({
+                title: '',
+                description: ''
+            });
         });
-    });
-    window.location.assign('http://localhost:8000/');
-}
+        window.location.assign('http://localhost:8000/');
+    }
 
-render() {
-    const containerClasses = [styles.container];
-    const containerItemsClasses = [styles.container__items];
-    const ItemClass = [styles.container__item];
-    const InputFormClasses = [styles.inputs];
-    const buttonFormClasses = [styles.button];
+    render() {
+        const containerClasses = [styles.container];
+        const containerItemsClasses = [styles.container__items];
+        const ItemClass = [styles.container__item];
+        const InputFormClasses = [styles.inputs];
+        const buttonFormClasses = [styles.button];
 
-    return (
-        <div className={containerClasses}>
-            <div className={containerItemsClasses}>
-                <div className={ItemClass}>
-                    <h2>Add Wish:</h2>
-                    <h3>Title:</h3>
-                    <input 
-                        className={InputFormClasses}
-                        type="text"
-                        value={this.state.title}
-                        onChange={this.handleChangeTitle}
-                    />
-                    <h3>Description:</h3>
-                    <textarea
-                        className={InputFormClasses}
-                        type="text"
-                        value={this.state.description}
-                        onChange={this.handleChangeDescription}
-                    ></textarea>
-                    <button 
-                        className={buttonFormClasses}
-                        onClick={this.handleIncludeWish}>
-                    Add Wish
-                    </button>
-                    <a href={'/'}>
-                        Cancel
-                    </a>
+        return (
+            <div className={containerClasses}>
+                <div className={containerItemsClasses}>
+                    <div className={ItemClass}>
+                        <h2>Add Wish:</h2>
+                        <h3>Title:</h3>
+                        <input 
+                            className={InputFormClasses}
+                            type="text"
+                            value={this.state.title}
+                            onChange={this.handleChangeTitle}
+                        />
+                        <h3>Description:</h3>
+                        <textarea
+                            className={InputFormClasses}
+                            type="text"
+                            value={this.state.description}
+                            onChange={this.handleChangeDescription}
+                        ></textarea>
+                        <button 
+                            className={buttonFormClasses}
+                            onClick={this.handleIncludeWish}>
+                        Add Wish
+                        </button>
+                        <a href={'/'}>
+                            Cancel
+                        </a>
+                    </div>
                 </div>
             </div>
-        </div>
-    );
+        );
+    }
 }
-}
-
-
 
 export default WishInsert;
